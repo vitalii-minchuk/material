@@ -1,15 +1,15 @@
 import { FC, Fragment, useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 
 import { PostType } from "../../types"
 
-import Typography from "@mui/material/Typography"
-import Button from "@mui/material/Button"
+import { Button, Typography } from "@mui/material"
 
 
 const SinglePost: FC = () => {
   const [post, setPost] = useState<PostType | null>(null)
   const { id } = useParams()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,8 +21,11 @@ const SinglePost: FC = () => {
     fetchData()
   }, [id])
 
+  const goBack = (): void => navigate(-1)
+
   return (
     <Fragment>
+      <Button onClick={goBack}>go back</Button>
       <Typography variant="h5" component="h3">
         SinglePost: {post ? " #" + post.id : "empty post"}
       </Typography>
@@ -41,4 +44,4 @@ const SinglePost: FC = () => {
   )
 }
 
-export default SinglePost
+export { SinglePost }

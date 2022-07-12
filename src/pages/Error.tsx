@@ -9,4 +9,4 @@ const Error: FC = () => {
   )
 }
 
-export default Error
+export { Error }

@@ -3,10 +3,7 @@ import { Link } from "react-router-dom"
 
 import { PostType } from "../../types"
 
-import Typography from "@mui/material/Typography"
-import Button from "@mui/material/Button"
-import List from "@mui/material/List"
-import ListItem from "@mui/material/ListItem"
+import { Button, List, ListItem, Typography } from "@mui/material"
 
 const Posts: FC = () => {
   const [posts, setPosts] = useState<PostType[] | null>(null)
@@ -44,4 +41,4 @@ const Posts: FC = () => {
   )
 }
 
-export default Posts  
+export { Posts }

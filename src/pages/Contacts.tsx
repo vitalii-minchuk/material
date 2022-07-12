@@ -8,4 +8,4 @@ const Contacts: FC = () => {
   )
 }
 
-export default Contacts
+export { Contacts }

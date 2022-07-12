@@ -6,4 +6,4 @@ const NewPost: FC = () => {
   )
 }
 
-export default NewPost
+export { NewPost }

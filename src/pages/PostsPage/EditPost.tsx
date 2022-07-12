@@ -1,7 +1,7 @@
 import { FC, Fragment } from "react"
 import { useParams } from "react-router-dom"
 
-import Typography from "@mui/material/Typography"
+import { Typography } from "@mui/material"
 
 const EditPost: FC = () => {
   const { id } =useParams()
@@ -13,4 +13,4 @@ const EditPost: FC = () => {
   )
 }
 
-export default EditPost
+export { EditPost }

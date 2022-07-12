@@ -15,4 +15,4 @@ const CustomNavLink: FC<ICustomNavLink> = ({ children, to, ...props }) => {
   )
 }
 
-export default CustomNavLink
+export { CustomNavLink }

@@ -1,5 +1,6 @@
-import Box from "@mui/material/Box"
 import { FC, ReactNode } from "react"
+
+import { Box } from "@mui/material"
 
 interface IWrapper {
   children: ReactNode
@@ -7,7 +8,7 @@ interface IWrapper {
   color: string
 }
 
-export const Wrapper: FC<IWrapper> = ({ children, bg, color }) => {
+const Wrapper: FC<IWrapper> = ({ children, bg, color }) => {
   return (
     <Box component="div"
     sx={{width: "100%", backgroundColor: bg, color: color}}>
@@ -15,3 +16,5 @@ export const Wrapper: FC<IWrapper> = ({ children, bg, color }) => {
     </Box>
   )
 }
+
+export { Wrapper }

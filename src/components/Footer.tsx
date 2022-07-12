@@ -1,8 +1,7 @@
 import { FC, Fragment } from "react"
-import { Wrapper } from "./MUI/CustomComponents/Wrapper"
 
-import Container from "@mui/material/Container"
-import Typography from "@mui/material/Typography"
+import { Container, Typography } from "@mui/material"
+import { Wrapper } from "./MUI/CustomComponents/Wrapper"
 
 const Footer: FC = () => {
   return (
@@ -16,4 +15,4 @@ const Footer: FC = () => {
   )
 }
 
-export default Footer
+export { Footer }

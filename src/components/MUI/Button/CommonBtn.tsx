@@ -6,4 +6,4 @@ const CommonBtn: FC = () => {
   )
 }
 
-export default CommonBtn
+export { CommonBtn }

@@ -1,12 +1,10 @@
-
 import { FC, Fragment } from "react"
 import { Outlet } from "react-router-dom"
 
-import Footer from "./Footer"
-import Header from "./Header"
+import { Box, Stack } from "@mui/material"
 
-import Stack from "@mui/material/Stack"
-import Box from "@mui/material/Box"
+import { Header } from "./Header"
+import { Footer } from "./Footer"
 
 const Layout: FC = () => {
   return (
@@ -23,8 +21,7 @@ const Layout: FC = () => {
         </Box>
       </Stack>
     </Fragment>
-
   )
 }
 
-export default Layout
+export { Layout }

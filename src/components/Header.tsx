@@ -1,10 +1,8 @@
 import { FC, Fragment } from "react"
-import { NavLink } from "react-router-dom"
 
-import Container from "@mui/material/Container"
-import Box from "@mui/material/Box"
+import { Box, Container } from "@mui/material"
 import { Wrapper } from "./MUI/CustomComponents/Wrapper"
-import CustomNavLink from "./MUI/CustomComponents/CustomNavLink"
+import { CustomNavLink } from "./MUI/CustomComponents/CustomNavLink"
 
 // const setActiveLink = ({ isActive }) => isActive ? "active-nav-link" : ""
 
@@ -25,4 +23,4 @@ const Header: FC = () => {
   )
 }
 
-export default Header
+export { Header }
