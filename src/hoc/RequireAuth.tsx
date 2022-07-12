@@ -1,15 +1,18 @@
-import { FC, ReactElement } from "react"
-import { Navigate } from "react-router-dom"
+import { FC, ReactElement, useContext } from "react"
+import { Navigate, useLocation } from "react-router-dom"
+
+import { AuthContext } from "./AuthProvider"
 
 interface IRequireAuth {
   children: ReactElement | null 
 }
 
 const RequireAuth: FC<IRequireAuth> = ({ children }): ReactElement | null => {
-  const auth = true
+  const location = useLocation()
+  const { isAuth } = useContext(AuthContext)
 
-  if (!auth) {
-    return <Navigate to="/login" />
+  if (!isAuth) {
+    return <Navigate to="/login" state={{from: location}} />
   }
 
   return children

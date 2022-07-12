@@ -22,7 +22,11 @@ const App: FC = () =>  {
           <Route path="contacts" element={<Contacts />} />
           <Route path="posts" element={<Posts />} />
           <Route path="posts/:id" element={<SinglePost />} />
-          <Route path="posts/:id/edit" element={<EditPost />} />
+          <Route path="posts/:id/edit" element={
+            <RequireAuth>
+              <EditPost />
+            </RequireAuth>
+          } />
           <Route path="posts/new" element={
             <RequireAuth>
               <NewPost />

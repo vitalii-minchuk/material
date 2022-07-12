@@ -6,7 +6,7 @@ import { Wrapper } from "./MUI/CustomComponents/Wrapper"
 const Footer: FC = () => {
   return (
     <Fragment>
-      <Wrapper bg="blue" color="white">
+      <Wrapper bg="teal" color="white">
         <Container maxWidth="lg" sx={{paddingY: "5px"}}>
           <Typography variant="body1" align="center">2022</Typography>
         </Container>
