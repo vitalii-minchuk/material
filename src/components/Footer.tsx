@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography"
 const Footer: FC = () => {
   return (
     <Fragment>
-      <Wrapper bg="red" color="white">
+      <Wrapper bg="blue" color="white">
         <Container maxWidth="lg" sx={{paddingY: "5px"}}>
           <Typography variant="body1" align="center">2022</Typography>
         </Container>

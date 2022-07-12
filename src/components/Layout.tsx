@@ -7,12 +7,10 @@ import Header from "./Header"
 
 import Stack from "@mui/material/Stack"
 import Box from "@mui/material/Box"
-import CssBaseline from "@mui/material/CssBaseline"
 
 const Layout: FC = () => {
   return (
     <Fragment>
-      <CssBaseline />
       <Stack  sx={{minHeight: "100vh"}}>
         <Box component="header">
           <Header />

@@ -15,12 +15,12 @@ const Header: FC = () => {
         <Container maxWidth="lg">
           <Box component="nav">
             <CustomNavLink to="/">Home</CustomNavLink>
-            <CustomNavLink to="/contact">Contact</CustomNavLink>
+            <CustomNavLink to="/contacts">Contacts</CustomNavLink>
             <CustomNavLink to="/about">About</CustomNavLink>
+            <CustomNavLink to="/posts">Posts</CustomNavLink>
           </Box>
         </Container>
       </Wrapper>
-
     </Fragment>
   )
 }
