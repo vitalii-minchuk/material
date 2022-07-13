@@ -20,18 +20,14 @@ const App: FC = () =>  {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="contacts" element={<Contacts />} />
-          <Route path="posts" element={<Posts />} />
+          <Route path="posts" element={
+            <RequireAuth>
+              <Posts />
+            </RequireAuth>
+          } />
           <Route path="posts/:id" element={<SinglePost />} />
-          <Route path="posts/:id/edit" element={
-            <RequireAuth>
-              <EditPost />
-            </RequireAuth>
-          } />
-          <Route path="posts/new" element={
-            <RequireAuth>
-              <NewPost />
-            </RequireAuth>
-          } />
+          <Route path="posts/:id/edit" element={<EditPost />} />
+          <Route path="posts/new" element={<NewPost />} />
           <Route path="about" element={<About />} />
           <Route path="login" element={<Login />} />
           <Route path="about-us" element={<Navigate to="/about" replace />} />

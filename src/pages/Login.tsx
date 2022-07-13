@@ -2,6 +2,7 @@ import { FC, Fragment, useContext } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 
 import { AuthContext } from "../hoc/AuthProvider"
+import { Type } from "typescript"
 
 import { Button, Typography } from "@mui/material"
 
@@ -9,17 +10,12 @@ const Login: FC = () => {
   const { logIn } = useContext(AuthContext)
   const location = useLocation()
   const navigate = useNavigate()
-//@ts-ignore
-  const from = location.state?.from?.pathname
+
+  const from = location.state as Type & {from: {pathname: string}}
 
   const handleLogIn = () => {
     logIn()
-    
-    if (from?.includes("new") || from?.includes("edit")) {
-      navigate(`${from}`, {replace: true})
-    } else {
-      navigate("/", {replace: true})
-    }
+    navigate(`${from.from.pathname}`, {replace: true})
   }
 
   return (

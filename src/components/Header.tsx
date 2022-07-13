@@ -1,5 +1,5 @@
 import { FC, Fragment, useContext } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 
 import { Button, Container, Stack, Typography } from "@mui/material"
 import { Wrapper } from "./MUI/CustomComponents/Wrapper"
@@ -12,12 +12,16 @@ import { AuthContext } from "../hoc/AuthProvider"
 const Header: FC = () => {
   const { isAuth, logOut } = useContext(AuthContext)
   const navigate = useNavigate()
+  const location = useLocation()
 
-  const handleLogOut = () => {
+  const handleLogOut = (): void => {
     logOut()
     navigate("/", {replace: true})
   }
-console.log(isAuth);
+
+  const handleLogIn = (): void => {
+    navigate("/login", {state: {from: location}})
+  }
 
   return (
     <Fragment>
@@ -34,9 +38,7 @@ console.log(isAuth);
             {isAuth ? (
               <Button onClick={handleLogOut}>log out</Button>
             ) : (
-              <Link to="login">
-                <Button>Log in</Button>
-              </Link>
+              <Button onClick={handleLogIn}>Log in</Button>
             )}
 
           </Stack>
