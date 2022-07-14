@@ -1,10 +1,10 @@
 import { FC, Fragment, useContext } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 
-import { AuthContext } from "../hoc/AuthProvider"
 import { Type } from "typescript"
+import { AuthContext } from "../../hoc/routing/AuthProvider"
 
-import { Button, Typography } from "@mui/material"
+import { Button, Container, Typography } from "@mui/material"
 
 const Login: FC = () => {
   const { logIn } = useContext(AuthContext)
@@ -20,8 +20,10 @@ const Login: FC = () => {
 
   return (
     <Fragment>
-      <Typography variant="h5">login</Typography>
-      <Button onClick={handleLogIn}>ok</Button>
+      <Container maxWidth="lg">
+        <Typography variant="h5" sx={{py: 2}}>Log in</Typography>
+        <Button onClick={handleLogIn}>ok</Button>
+      </Container>
     </Fragment>
   )
 }

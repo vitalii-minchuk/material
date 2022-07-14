@@ -1,10 +1,11 @@
 import { FC, Fragment, useContext } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 
+import { AuthContext } from "../../hoc/routing/AuthProvider"
+
 import { Button, Container, Stack, Typography } from "@mui/material"
-import { Wrapper } from "./MUI/CustomComponents/Wrapper"
-import { CustomNavLink } from "./MUI/CustomComponents/CustomNavLink"
-import { AuthContext } from "../hoc/AuthProvider"
+import { Wrapper } from "./CustomComponents/Wrapper"
+import { CustomNavLink } from "./CustomComponents/CustomNavLink"
 
 
 // const setActiveLink = ({ isActive }) => isActive ? "active-nav-link" : ""
@@ -16,11 +17,11 @@ const Header: FC = () => {
 
   const handleLogOut = (): void => {
     logOut()
-    navigate("/", {replace: true})
+    navigate("/routing", {replace: true})
   }
 
   const handleLogIn = (): void => {
-    navigate("/login", {state: {from: location}})
+    navigate("login", {state: {from: location}})
   }
 
   return (
@@ -30,15 +31,15 @@ const Header: FC = () => {
           <Stack justifyContent="space-between" flexDirection="row" alignItems="center">
             <Typography variant="h5">LOGO</Typography>
             <Stack component="nav" flexDirection="row" gap={3}>
-              <CustomNavLink to="/">Home</CustomNavLink>
-              <CustomNavLink to="/contacts">Contacts</CustomNavLink>
-              <CustomNavLink to="/about">About</CustomNavLink>
-              <CustomNavLink to="/posts">Posts</CustomNavLink>
+              <CustomNavLink to="">Home</CustomNavLink>
+              <CustomNavLink to="contacts">Contacts</CustomNavLink>
+              <CustomNavLink to="about">About</CustomNavLink>
+              <CustomNavLink to="posts">Posts</CustomNavLink>
             </Stack>
             {isAuth ? (
-              <Button onClick={handleLogOut}>log out</Button>
+              <Button color="secondary" onClick={handleLogOut}>log out</Button>
             ) : (
-              <Button onClick={handleLogIn}>Log in</Button>
+              <Button color="secondary"  onClick={handleLogIn}>Log in</Button>
             )}
 
           </Stack>

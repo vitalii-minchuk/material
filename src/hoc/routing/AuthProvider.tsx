@@ -1,4 +1,4 @@
-import { useState, FC, createContext, ReactNode } from 'react';
+import { useState, FC, createContext, ReactNode } from "react"
 
 interface IAuthContext {
   isAuth: boolean

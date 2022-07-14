@@ -1,7 +1,7 @@
 import { FC, FormEvent, useState } from "react"
 import { URLSearchParamsInit } from "react-router-dom"
 
-import { Box, Button, Checkbox, FormControlLabel, TextField } from "@mui/material"
+import { Button, Checkbox, FormControlLabel, Stack, TextField } from "@mui/material"
 
 interface IPostSearchForm {
   queryPost: string
@@ -30,7 +30,10 @@ const PostSearchForm: FC<IPostSearchForm> = ({setSearchParams, isLatest, queryPo
   }
 
   return (
-    <Box
+    <Stack 
+      direction="row"
+      py={3}
+      spacing={2}
       component="form"
       noValidate
       autoComplete="off"
@@ -38,7 +41,7 @@ const PostSearchForm: FC<IPostSearchForm> = ({setSearchParams, isLatest, queryPo
     >
       <TextField
         id="search" 
-        label="Outlined"
+        label="Search"
         variant="outlined"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
@@ -54,8 +57,8 @@ const PostSearchForm: FC<IPostSearchForm> = ({setSearchParams, isLatest, queryPo
         }
         label="New Only"
       />
-      <Button variant="contained" type="submit">Search</Button>
-    </Box>
+      <Button variant="text" type="submit">Search</Button>
+    </Stack>
   )
 }
 

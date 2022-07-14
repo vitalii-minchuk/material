@@ -12,7 +12,7 @@ const RequireAuth: FC<IRequireAuth> = ({ children }): ReactElement | null => {
   const { isAuth } = useContext(AuthContext)
 
   if (!isAuth) {
-    return <Navigate to="/login" state={{from: location}} />
+    return <Navigate to="/routing/login" state={{from: location}} />
   }
 
   return children

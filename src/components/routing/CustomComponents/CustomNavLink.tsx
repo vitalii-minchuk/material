@@ -6,10 +6,13 @@ interface ICustomNavLink {
   children: ReactNode
 }
 const CustomNavLink: FC<ICustomNavLink> = ({ children, to, ...props }) => {
-  const match = useMatch(to)
+  const match = useMatch({
+    path: to,
+    end: to.length === 0
+  })
 
   return (
-    <Link to={to} {...props} style={{color: match ? "red" : ""}}>
+    <Link to={to} {...props} style={{color: match ? "black" : ""}}>
       {children}
     </Link>
   )

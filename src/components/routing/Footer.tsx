@@ -1,7 +1,7 @@
 import { FC, Fragment } from "react"
 
 import { Container, Typography } from "@mui/material"
-import { Wrapper } from "./MUI/CustomComponents/Wrapper"
+import { Wrapper } from "./CustomComponents/Wrapper"
 
 const Footer: FC = () => {
   return (
