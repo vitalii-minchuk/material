@@ -5,6 +5,7 @@ const MainPage: FC = () => {
   return (
     <div>MainPage
       <Link to="/routing">routing</Link>
+      <Link to="/redux">redux</Link>
     </div>
   )
 }

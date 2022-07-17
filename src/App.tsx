@@ -13,12 +13,23 @@ import { SinglePost } from "./pages/routing/PostsPage/SinglePost"
 import { MainPage } from "./pages/MainPage"
 import { About } from "./pages/routing/About"
 import { Login } from "./pages/routing/Login"
+import { Rdx } from "./pages/rdx/Rdx"
+import { LayoutRdx } from "./components/rdx/LayoutRdx"
+import { Transaction } from "./pages/rdx/Transaction"
+import { AboutRdx } from "./pages/rdx/AboutRdx"
 
 const App: FC = () =>  {
   return (
     <Fragment>
       <Routes>
         <Route path="/" element={<MainPage />} />
+
+        <Route path="redux/*" element={<LayoutRdx />}>
+          <Route index element={<Rdx />} />
+          <Route path="transaction" element={<Transaction />} />
+          <Route path="about" element={<AboutRdx />} />
+        </Route>
+
         <Route path="routing/*" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="contacts/*" element={<Contacts />} />
@@ -36,6 +47,7 @@ const App: FC = () =>  {
           <Route path="login" element={<Login />} />
           <Route path="*" element={<Error />} />
         </Route>
+        
       </Routes>
     </Fragment>
   )
