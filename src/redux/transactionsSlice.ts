@@ -4,19 +4,27 @@ import { TransactionType } from "../types"
 type TransactionState = {
   transactions: TransactionType[]
   currentTr: TransactionType | null
+  isLoading: boolean
 }
 
 const initialState: TransactionState = {
   transactions: [],
-  currentTr: null
+  currentTr: null,
+  isLoading: false
 }
 
 const transactionsSlice = createSlice({
   name: "transactions",
   initialState,
   reducers: {
+    fetchTransactions(state) {
+      state.isLoading = true
+    },
+    fetchTransactionsSuccess(state, action: PayloadAction<TransactionType[]> ) {
+      state.transactions = action.payload
+      state.isLoading = false
+    },
     addTransaction(state, action: PayloadAction<TransactionType>) {
-  
       state.transactions.push({
         transactionid: action.payload.transactionid,
         amount: action.payload.amount,
@@ -24,6 +32,7 @@ const transactionsSlice = createSlice({
         status: action.payload.status,
         type: action.payload.type
       })
+      state.currentTr = state.transactions[state.transactions.length - 1]
     },
     toggleStatus(state, action: PayloadAction<TransactionType>) {
       const toggledTransaction = state.transactions.find(el => el.transactionid === action.payload.transactionid)
@@ -40,10 +49,10 @@ const transactionsSlice = createSlice({
   }
 })
 
-
-
 export const { addTransaction,
   removeTransaction,
   toggleStatus,
+  fetchTransactions,
+  fetchTransactionsSuccess,
   setCurrentTr } = transactionsSlice.actions
 export default transactionsSlice.reducer

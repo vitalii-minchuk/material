@@ -1,57 +1,72 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { OpenDialogsType } from '../../../types';
-import { useAppDispatch, useAppSelector } from '../../../hooks/rdx/hooks';
-import { removeTransaction } from '../../../redux/transactionsSlice';
+import { FC, forwardRef, MouseEvent } from "react"
 
-const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  borderRadius: "5px",
-  bgcolor: 'background.paper',
-  boxShadow: 24,
-  p: 4,
-};
+import { useAppDispatch, useAppSelector } from "../../../hooks/rdx/hooks"
+import { removeTransaction } from "../../../redux/transactionsSlice"
+import { OpenDialogsType } from "../../../types"
+
+import { 
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Slide
+} from "@mui/material"
+import { TransitionProps } from "@mui/material/transitions"
+
+const Transition = forwardRef(function Transition(
+  props: TransitionProps & {
+    children: React.ReactElement<any, any>
+  },
+  ref: React.Ref<unknown>,
+) {
+  return <Slide direction="up" ref={ref} {...props} />
+})
 
 interface IDeleteTrDialog {
   setOpen: React.Dispatch<React.SetStateAction<OpenDialogsType>>
   open: OpenDialogsType
 }
-export default function DeleteTrDialog({setOpen, open,}:IDeleteTrDialog) {
+
+const DeleteTrDialog: FC<IDeleteTrDialog> = ({ setOpen, open }) => {
   const { currentTr } = useAppSelector(state => state.transactions)
   const dispatch = useAppDispatch()
-console.log(currentTr)  
-  const handleClose = () => {
-    if (currentTr?.transactionid) {
-      dispatch(removeTransaction(currentTr.transactionid))
+ 
+  const handleClose = (event: MouseEvent) => {
+
+    if (event.currentTarget.textContent === "ok") {
+
+      if (currentTr?.transactionid) {
+        dispatch(removeTransaction(currentTr.transactionid))
+      }
     }
+
     setOpen({...open, delTr: false})
   }
 
   return (
     <div>
-      <Modal
+      <Dialog
         open={open.delTr}
+        TransitionComponent={Transition}
+        keepMounted
         onClose={handleClose}
-        aria-labelledby="keep-mounted-modal-title"
-        aria-describedby="keep-mounted-modal-description"
+        aria-describedby="alert-dialog-slide-description"
       >
-        <Box sx={style}>
-          <Typography id="keep-mounted-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
+        <DialogTitle>transaction #{currentTr?.transactionid}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+            Would you like to remove this transaction from the table ?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
           <Button onClick={handleClose}>cancel</Button>
-          <Button onClick={handleClose}>
-            ok
-          </Button>
-        </Box>
-      </Modal>
+          <Button onClick={handleClose}>ok</Button>
+        </DialogActions>
+      </Dialog>
     </div>
-  );
+  )
 }
+
+export { DeleteTrDialog }

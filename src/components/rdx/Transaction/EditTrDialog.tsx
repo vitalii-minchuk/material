@@ -7,9 +7,9 @@ import {
   SetStateAction,
 } from "react"
 
-import { useAppDispatch } from "../../../hooks/rdx/hooks"
-import { toggleStatus } from "../../../redux/transactionsSlice"
-import { OpenDialogsType, TransactionType } from "../../../types"
+import { useAppDispatch, useAppSelector } from "../../../hooks/rdx/hooks"
+import { setCurrentTr, toggleStatus } from "../../../redux/transactionsSlice"
+import { OpenDialogsType } from "../../../types"
 
 import { TransitionProps } from "@mui/material/transitions"
 import { 
@@ -35,26 +35,31 @@ const Transition = forwardRef(function Transition(
 const possibleStatus= ["Pending", "Completed", "Cancelled"]
 
 interface IDeleteTrDialog {
-  transaction: TransactionType
   open: OpenDialogsType
   setOpen: Dispatch<SetStateAction<OpenDialogsType>>
 }
 
-const EditTrDialog: FC<IDeleteTrDialog> = ({ transaction, open, setOpen }) => {
+const EditTrDialog: FC<IDeleteTrDialog> = ({ open, setOpen }) => {
   const dispatch = useAppDispatch()
-  const currentStatus = possibleStatus.filter(el => el === transaction.status)
-  const statusOptions = possibleStatus.filter(el => el !== transaction.status)
-console.log(transaction)
+  const { currentTr } = useAppSelector(state => state.transactions)
+  const currentStatus = possibleStatus.filter(el => el === currentTr?.status)
+  const statusOptions = possibleStatus.filter(el => el !== currentTr?.status)
+
   const handleClose = (event: MouseEvent): void => {
 
-    if (event.currentTarget.textContent === "Pending") {
-      dispatch(toggleStatus({...transaction, status: "Pending"}))
-    } else if (event.currentTarget.textContent === "Completed") {
-      dispatch(toggleStatus({...transaction, status: "Completed"}))
-    } else {
-      dispatch(toggleStatus({...transaction, status: "Cancelled"}))
+    if (currentTr) {
+      if (event.currentTarget.textContent === "Pending") {
+        dispatch(setCurrentTr({...currentTr, status: "Pending"}))
+        dispatch(toggleStatus({...currentTr, status: "Pending"}))
+      } else if (event.currentTarget.textContent === "Completed") {
+        dispatch(setCurrentTr({...currentTr, status: "Completed"}))
+        dispatch(toggleStatus({...currentTr, status: "Completed"}))
+      } else {
+        dispatch(setCurrentTr({...currentTr, status: "Cancelled"}))
+        dispatch(toggleStatus({...currentTr, status: "Cancelled"}))
+      }
     }
- 
+
     setOpen({...open, editTr: false})
   }
 
@@ -63,17 +68,15 @@ console.log(transaction)
       <Dialog
         open={open.editTr}
         TransitionComponent={Transition}
-        // keepMounted
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
       >
-        <CloseSharp onClick={() => setOpen({...open, editTr: false})} />
-        <DialogTitle>transaction #{transaction.transactionid}</DialogTitle>
+        <CloseSharp sx={{marginLeft: "auto", p: "5px", cursor: "pointer"}}
+          onClick={() => setOpen({...open, editTr: false})}
+        />
+        <DialogTitle>transaction #{currentTr?.transactionid}</DialogTitle>
         <DialogContent>
           <Stack gap={2}>
-            
-
-{transaction.clientname}
             Would you like to change current status {currentStatus}?
           </Stack>
         </DialogContent>

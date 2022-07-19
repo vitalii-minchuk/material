@@ -1,13 +1,14 @@
-import { FC, useState } from "react"
+import { FC, useEffect, useState } from "react"
 
-import { useAppSelector } from "../../hooks/rdx/hooks"
+import { useAppDispatch, useAppSelector } from "../../hooks/rdx/hooks"
+import { OpenDialogsType } from "../../types"
+import { fetchTransactions } from "../../redux/transactionsSlice"
 
 import { Box, Container, Divider, Paper, Stack, Typography } from "@mui/material"
 
-import TrItem from "../../components/rdx/Transaction/TrItem"
-import TrOptions from "../../components/rdx/Transaction/TrOptions"
+import { TrItem } from "../../components/rdx/Transaction/TrItem"
+import { TrOptions } from "../../components/rdx/Transaction/TrOptions"
 import { AddNewTrDialog } from "../../components/rdx/Transaction/AddNewTrDialog"
-import { OpenDialogsType } from "../../types"
 
 const tableHeader = ["ID", "Status", "Type", "Client name", "Amount", "Actions"]
 
@@ -17,8 +18,14 @@ const Transaction: FC = () => {
     delTr: false,
     editTr: false
   })
+  const { transactions } = useAppSelector(state => state.transactions)
+  // const { isLoading } = useAppSelector(state => state.transactions)
 
-  const transactions = useAppSelector(state => state.transactions.transactions)
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(fetchTransactions()) 
+  }, [dispatch])
 console.log(transactions)
   return (
     <Container maxWidth="lg">

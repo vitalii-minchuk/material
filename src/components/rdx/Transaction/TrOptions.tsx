@@ -20,4 +20,4 @@ const TrOptions: FC<ITrOptions> = ({ setOpen, open}) => {
   )
 }
 
-export default TrOptions
+export { TrOptions }
