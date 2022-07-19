@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom"
 import { Box, Stack } from "@mui/material"
 import { Header } from "./Header"
 import { Provider } from "react-redux"
-import { store } from "../../redux/store"
+import store from "../../redux"
 
 const LayoutRdx: FC = () => {
   return (
