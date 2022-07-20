@@ -1,16 +1,19 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit"
 import transactionsReducer from "./transactionsSlice"
+import importReducer from "./importDataSlice"
 import logger from "redux-logger"
 import createSagaMiddleware from "@redux-saga/core"
 import { all, fork } from "@redux-saga/core/effects"
 import { rootTransactionsSaga } from "./transactionsSaga"
+import { rootImportDataSaga } from "./importDataSaga"
 
 const combinedReducer = combineReducers({
-  transactions: transactionsReducer
+  transactions: transactionsReducer,
+  import: importReducer
 })
 
 const rootSaga = function* rootGenerator() {
-  yield all([fork(rootTransactionsSaga)])
+  yield all([fork(rootTransactionsSaga), fork(rootImportDataSaga)])
 }
 
 const sagaMMiddleware = createSagaMiddleware()

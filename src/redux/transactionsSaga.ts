@@ -16,7 +16,6 @@ export function* fetchTransactionsSaga() {
 
 export function* addTransactionSaga() {
   const data: TransactionType = yield select((store) => store.transactions.currentTr)
-console.log(data)
   yield addData(data)
 }
 

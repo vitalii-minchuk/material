@@ -4,11 +4,13 @@ import { useAppDispatch, useAppSelector } from "../../hooks/rdx/hooks"
 import { OpenDialogsType } from "../../types"
 import { fetchTransactions } from "../../redux/transactionsSlice"
 
-import { Box, Container, Divider, Paper, Stack, Typography } from "@mui/material"
+import { Box, Button, Container, Divider, Paper, Stack, Typography } from "@mui/material"
 
 import { TrItem } from "../../components/rdx/Transaction/TrItem"
 import { TrOptions } from "../../components/rdx/Transaction/TrOptions"
 import { AddNewTrDialog } from "../../components/rdx/Transaction/AddNewTrDialog"
+import { ExportDialog } from "../../components/rdx/Transaction/ExportDialog"
+import { ImportDialog } from "../../components/rdx/Transaction/ImportDialog"
 
 const tableHeader = ["ID", "Status", "Type", "Client name", "Amount", "Actions"]
 
@@ -16,7 +18,8 @@ const Transaction: FC = () => {
   const [isDialogOpen, setDialogOpen] = useState<OpenDialogsType>({
     addNewTr: false,
     delTr: false,
-    editTr: false
+    editTr: false,
+    import: false
   })
   const { transactions } = useAppSelector(state => state.transactions)
   // const { isLoading } = useAppSelector(state => state.transactions)
@@ -27,8 +30,14 @@ const Transaction: FC = () => {
     dispatch(fetchTransactions()) 
   }, [dispatch])
 console.log(transactions)
+
+  const importHandler = () => {
+    setDialogOpen({...isDialogOpen, import: true})
+  }
+
   return (
     <Container maxWidth="lg">
+      <Button onClick={importHandler}>import</Button>
       <Box my={3}>
         <Paper elevation={12} sx={{minHeight: "500px", p: "15px"}}>
           <TrOptions
@@ -59,6 +68,8 @@ console.log(transactions)
         </Paper>
       </Box>
       <AddNewTrDialog setOpen={setDialogOpen} open={isDialogOpen} />
+      <ExportDialog />
+      <ImportDialog setOpen={setDialogOpen} open={isDialogOpen} />
     </Container>
   )
 }

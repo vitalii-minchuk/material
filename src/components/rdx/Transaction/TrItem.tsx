@@ -33,22 +33,22 @@ const TrItem: FC<ITrItem> = ({ transaction, open, setOpen }) => {
   return (
     <Fragment>
       <Stack p={1} direction={"row"} justifyContent={"space-between"}>
-        <Box width={150}>
+        <Box width={50}>
           <Typography variant="subtitle1">{transaction.transactionid}</Typography>
         </Box>
-        <Box width={150}>
+        <Box width={80}>
           <Typography variant="subtitle1">{transaction.status}</Typography>
         </Box>
-        <Box width={150}>
+        <Box width={80}>
           <Typography variant="subtitle1">{transaction.type}</Typography>
         </Box>
-        <Box width={150}>
+        <Box width={110}>
           <Typography variant="subtitle1">{transaction.clientname}</Typography>
         </Box>
-        <Box width={150}>
+        <Box width={50}>
           <Typography variant="subtitle1">{transaction.amount}</Typography>
         </Box>
-        <Box>
+        <Box width={150}>
           <Button onClick={handleEdit}>
             <Tooltip title="edit">
               <ModeEditOutlinedIcon />
