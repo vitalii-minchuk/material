@@ -63,10 +63,6 @@ const Transaction: FC = () => {
               open={isDialogOpen}
             />
           })}
-          
-{/* 
-          <Stack sx={{marginTop: "auto"}}>
-          </Stack> */}
         </Paper>
       </Box>
       <AddNewTrDialog setOpen={setDialogOpen} open={isDialogOpen} />
