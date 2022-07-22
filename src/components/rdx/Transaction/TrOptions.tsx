@@ -12,7 +12,6 @@ const TrOptions: FC<ITrOptions> = ({ setOpen, open}) => {
 
   return (
     <Stack p={1} direction="row" justifyContent="space-between">
-      <Stack>filters</Stack>
       <Box mr={"auto"}>
         <Button onClick={() => setOpen({...open, addNewTr: true})}>+ add new</Button>
       </Box>

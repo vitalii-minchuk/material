@@ -1,21 +1,21 @@
 import { FC, forwardRef, MouseEvent } from "react"
 
-import { useAppDispatch, useAppSelector } from "../../../hooks/rdx/hooks"
-import { removeTransaction } from "../../../redux/Slices/transactionsSlice"
+import { useAppDispatch } from "../../../hooks/rdx/hooks"
+import { downloadData, importData } from "../../../redux/Slices/importDataSlice"
 import { OpenDialogsType, TransactionType } from "../../../types"
 import CSVReader from "react-csv-reader"
 
 import { 
+  Box,
   Button,
   Dialog,
   DialogActions,
   DialogContent,
   DialogContentText,
   DialogTitle,
-  Slide
+  Slide,
 } from "@mui/material"
 import { TransitionProps } from "@mui/material/transitions"
-import { downloadData, importData } from "../../../redux/Slices/importDataSlice"
 
 const papaparseOptions = {
   header: true,
@@ -44,6 +44,7 @@ interface IDeleteTrDialog {
 
 
 const ImportDialog: FC<IDeleteTrDialog> = ({ setOpen, open }) => {
+  // const [drag, setDrag] = useState(false)
   const dispatch = useAppDispatch()
   const handleForce = (data: TransactionType[]) => dispatch(downloadData((data)))
  
@@ -51,42 +52,45 @@ const ImportDialog: FC<IDeleteTrDialog> = ({ setOpen, open }) => {
 
     if (event.currentTarget.textContent === "ok") {
       dispatch(importData())
-      // if (currentTr?.transactionid) {
-      //   dispatch(removeTransaction(currentTr.transactionid))
-      // }
     }
 
     setOpen({...open, import: false})
   }
 
   return (
-    <div>
-
+    <Box p={6} width={280}>
       <Dialog
         open={open.import}
         TransitionComponent={Transition}
         keepMounted
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
-      >          
-      
-      <CSVReader
-            cssClass="csv-input"
-            onFileLoaded={handleForce}
-            parserOptions={papaparseOptions}
-          />
-        <DialogTitle>transaction </DialogTitle>
+      >
+        <DialogTitle>Chose .csv file to import</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-            Would you like to remove this transaction from the table ?
+            <Box p={3}>
+              <CSVReader
+                onFileLoaded={handleForce}
+                parserOptions={papaparseOptions}
+              />
+            </Box>
+            <Box m={3} sx={{border: "2px dashed black"}}>
+              {/* {drag ? (
+                <Typography>Drag your file here</Typography>
+              ) : (
+                <Typography>Drop your file</Typography>
+              )} */}
+  
+            </Box>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>cancel</Button>
-          <Button onClick={handleClose}>ok</Button>
+          <Button onClick={handleClose}>import</Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </Box>
   )
 }
 

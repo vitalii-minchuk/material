@@ -3,14 +3,13 @@ import { Dispatch, FC, SetStateAction, useEffect, useRef, useState } from "react
 import { AmountFilterType, OpenDialogsType, TransactionType } from "../../../types"
 import { useAppSelector } from "../../../hooks/rdx/hooks"
 import { useMapTables } from "../../../utils/mapTable"
+import { getMaxMinAmount, getNumberFromAmount } from "../../../utils/helpers"
 import CsvDownload from "react-json-to-csv"
 
 import {
-  Button,
   Dialog,
   DialogActions,
   DialogContent,
-  DialogProps,
   DialogTitle,
   FormControl,
   FormControlLabel,
@@ -19,14 +18,15 @@ import {
   Radio,
   RadioGroup,
   Slider,
+  Stack,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
-  TableRow
+  TableRow,
+  Typography
 } from "@mui/material"
-import { getMaxMinAmount, getNumberFromAmount } from "../../../utils/helpers"
 
 interface IExportDialog {
   open: OpenDialogsType
@@ -41,11 +41,7 @@ const ExportDialog: FC<IExportDialog> = ({ open, setOpen }) => {
   const [statusFilter, setStatusFilter] = useState("All")
   const [amountFilter, setAmountFilter] = useState<AmountFilterType>({from: 0, to: 100})
 
-
-  const [scroll, setScroll] = useState<DialogProps["scroll"]>("paper")
-
   const myTable = useMapTables(transactions)
-console.log(myTable)
 
   useEffect(() => {
     let filteredItems = [] as TransactionType[]
@@ -53,7 +49,6 @@ console.log(myTable)
       const num = getNumberFromAmount(el.amount)
 
       if (amountFilter.from < num && num < amountFilter.to) {
-console.log("hello")
         filteredItems.push(el)
       }
     })
@@ -71,12 +66,6 @@ console.log("hello")
     }
   }, [myTable, statusFilter, typeFilter])
 
-console.log(items)
-  const handleClickOpen = (scrollType: DialogProps["scroll"]) => () => {
-    setOpen({...open, export: false})
-    setScroll(scrollType)
-  }
-
   const handleClose = () => {
     setOpen({...open, export: false})
   }
@@ -91,23 +80,22 @@ console.log(items)
     }
   }, [open])
 
-
-
-
-
   return (
     <div>
-      <Button onClick={handleClickOpen("paper")}>scroll=paper</Button>
-      <Button onClick={handleClickOpen("body")}>scroll=body</Button>
       <Dialog 
         open={open.export}
         onClose={handleClose}
-        scroll={scroll}
+        scroll={"paper"}
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
       >
-        <DialogTitle id="scroll-dialog-title">Subscribe</DialogTitle>
-        <DialogContent dividers={scroll === "paper"}>
+        <DialogTitle id="scroll-dialog-title">
+          <Stack direction="row" justifyContent="space-between">
+            <Typography>Table filters</Typography>
+            <Typography>total: {filteredItems?.length}</Typography>
+          </Stack>
+        </DialogTitle>
+        <DialogContent dividers>
           <FormControl>
             <FormLabel id="demo-radio-buttons-group-label">Type</FormLabel>
             <RadioGroup

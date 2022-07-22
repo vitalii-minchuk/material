@@ -1,4 +1,4 @@
-import { AmountFilterType, TransactionType } from "../types";
+import { AmountFilterType, TransactionType } from "../types"
 
 export const getMaxMinAmount = (arr: TransactionType[]): AmountFilterType => {
   let array: Array<number> = []
