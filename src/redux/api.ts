@@ -1,7 +1,7 @@
 import axios from "axios"
 import { TransactionType } from "../types"
 
-const baseUrl = "https://627e94bb271f386ceffad340.mockapi.io/items/transactions/"
+const baseUrl = "https://627e94bb271f386ceffad340.mockapi.io/items/trans/"
 
 export const getData = async () => {
   const response = await axios.get<TransactionType[]>(baseUrl)

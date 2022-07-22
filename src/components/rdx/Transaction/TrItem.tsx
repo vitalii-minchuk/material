@@ -2,7 +2,7 @@ import { Dispatch, FC, Fragment, SetStateAction } from "react"
 
 import { OpenDialogsType, TransactionType } from "../../../types"
 import { useAppDispatch } from "../../../hooks/rdx/hooks"
-import { setCurrentTr } from "../../../redux/transactionsSlice"
+import { setCurrentTr } from "../../../redux/Slices/transactionsSlice"
 
 import { Box, Button, Stack, Tooltip, Typography } from "@mui/material"
 import DeleteSweepOutlinedIcon from "@mui/icons-material/DeleteSweepOutlined"

@@ -1,7 +1,7 @@
 import { FC, forwardRef, MouseEvent } from "react"
 
 import { useAppDispatch, useAppSelector } from "../../../hooks/rdx/hooks"
-import { removeTransaction } from "../../../redux/transactionsSlice"
+import { removeTransaction } from "../../../redux/Slices/transactionsSlice"
 import { OpenDialogsType } from "../../../types"
 
 import { 

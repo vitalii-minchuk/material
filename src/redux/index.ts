@@ -1,11 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit"
-import transactionsReducer from "./transactionsSlice"
-import importReducer from "./importDataSlice"
+import transactionsReducer from "./Slices/transactionsSlice"
+import importReducer from "./Slices/importDataSlice"
 import logger from "redux-logger"
 import createSagaMiddleware from "@redux-saga/core"
 import { all, fork } from "@redux-saga/core/effects"
-import { rootTransactionsSaga } from "./transactionsSaga"
-import { rootImportDataSaga } from "./importDataSaga"
+import { rootTransactionsSaga } from "./Sagas/transactionsSaga"
+import { rootImportDataSaga } from "./Sagas/importDataSaga"
 
 const combinedReducer = combineReducers({
   transactions: transactionsReducer,

@@ -1,8 +1,7 @@
 import {  delay, select, takeEvery } from "@redux-saga/core/effects"
-import { TransactionType } from "../types"
-import { addData } from "./api"
-import { importData } from "./importDataSlice"
-
+import { TransactionType } from "../../types";
+import { addData } from "../api"
+import { importData } from "../Slices/importDataSlice"
 
 export function* importDataSaga() {
   const data: TransactionType[] = yield select((store) => store.import.data)

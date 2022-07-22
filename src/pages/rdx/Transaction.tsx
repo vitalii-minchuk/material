@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react"
 
 import { useAppDispatch, useAppSelector } from "../../hooks/rdx/hooks"
 import { OpenDialogsType } from "../../types"
-import { fetchTransactions } from "../../redux/transactionsSlice"
+import { fetchTransactions } from "../../redux/Slices/transactionsSlice"
 
 import { Box, Button, Container, Divider, Paper, Stack, Typography } from "@mui/material"
 
@@ -19,25 +19,28 @@ const Transaction: FC = () => {
     addNewTr: false,
     delTr: false,
     editTr: false,
-    import: false
+    import: false,
+    export: false
   })
   const { transactions } = useAppSelector(state => state.transactions)
-  // const { isLoading } = useAppSelector(state => state.transactions)
 
   const dispatch = useAppDispatch()
 
   useEffect(() => {
     dispatch(fetchTransactions()) 
   }, [dispatch])
-console.log(transactions)
 
   const importHandler = () => {
     setDialogOpen({...isDialogOpen, import: true})
+  }
+  const exportHandler = () => {
+    setDialogOpen({...isDialogOpen, export: true})
   }
 
   return (
     <Container maxWidth="lg">
       <Button onClick={importHandler}>import</Button>
+      <Button onClick={exportHandler}>export</Button>
       <Box my={3}>
         <Paper elevation={12} sx={{minHeight: "500px", p: "15px"}}>
           <TrOptions
@@ -61,14 +64,13 @@ console.log(transactions)
             />
           })}
           
-
+{/* 
           <Stack sx={{marginTop: "auto"}}>
-            ttt
-          </Stack>
+          </Stack> */}
         </Paper>
       </Box>
       <AddNewTrDialog setOpen={setDialogOpen} open={isDialogOpen} />
-      <ExportDialog />
+      <ExportDialog  setOpen={setDialogOpen} open={isDialogOpen}  />
       <ImportDialog setOpen={setDialogOpen} open={isDialogOpen} />
     </Container>
   )

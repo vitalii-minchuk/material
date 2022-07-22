@@ -9,7 +9,7 @@ import {
 } from "react"
 
 import { useAppDispatch, useAppSelector } from "../../../hooks/rdx/hooks"
-import { addTransaction } from "../../../redux/transactionsSlice"
+import { addTransaction } from "../../../redux/Slices/transactionsSlice"
 import { OpenDialogsType, TransactionType } from "../../../types"
 
 import { TransitionProps } from "@mui/material/transitions"

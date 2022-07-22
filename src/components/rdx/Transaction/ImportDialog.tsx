@@ -1,7 +1,7 @@
 import { FC, forwardRef, MouseEvent } from "react"
 
 import { useAppDispatch, useAppSelector } from "../../../hooks/rdx/hooks"
-import { removeTransaction } from "../../../redux/transactionsSlice"
+import { removeTransaction } from "../../../redux/Slices/transactionsSlice"
 import { OpenDialogsType, TransactionType } from "../../../types"
 import CSVReader from "react-csv-reader"
 
@@ -15,7 +15,7 @@ import {
   Slide
 } from "@mui/material"
 import { TransitionProps } from "@mui/material/transitions"
-import { downloadData, importData } from "../../../redux/importDataSlice"
+import { downloadData, importData } from "../../../redux/Slices/importDataSlice"
 
 const papaparseOptions = {
   header: true,

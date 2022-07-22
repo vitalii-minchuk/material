@@ -17,5 +17,11 @@ export type OpenDialogsType = {
   delTr: boolean
   editTr: boolean
   import: boolean
+  export: boolean
+}
+
+export type AmountFilterType ={
+  from: number
+  to: number
 }
 

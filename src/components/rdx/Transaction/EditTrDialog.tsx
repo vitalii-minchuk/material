@@ -8,7 +8,7 @@ import {
 } from "react"
 
 import { useAppDispatch, useAppSelector } from "../../../hooks/rdx/hooks"
-import { setCurrentTr, toggleStatus } from "../../../redux/transactionsSlice"
+import { setCurrentTr, toggleStatus } from "../../../redux/Slices/transactionsSlice"
 import { OpenDialogsType } from "../../../types"
 
 import { TransitionProps } from "@mui/material/transitions"
