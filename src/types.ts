@@ -25,3 +25,11 @@ export type AmountFilterType ={
   to: number
 }
 
+export type InvestmentDetails = {
+  fullName: string
+  initialInvestment: number | string
+  investmentRisk: Array<"High" | "Medium" | "Low">
+  commentAboutInvestmentRisk: string
+  dependents: number
+  acceptedTermsAndConditions: boolean
+}

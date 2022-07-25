@@ -17,6 +17,11 @@ import { Rdx } from "./pages/rdx/Rdx"
 import { LayoutRdx } from "./components/rdx/LayoutRdx"
 import { Transaction } from "./pages/rdx/Transaction"
 import { AboutRdx } from "./pages/rdx/AboutRdx"
+import { FormikHome } from "./pages/formik/FormikHome"
+import { BankAccount } from "./pages/formik/BankAccount"
+import { LayoutFormik } from "./components/formik/LayoutFormik"
+import { Donation } from "./pages/formik/Donation"
+import { Millionaire } from "./pages/formik/Millionaire"
 
 const App: FC = () =>  {
   return (
@@ -28,6 +33,13 @@ const App: FC = () =>  {
           <Route index element={<Rdx />} />
           <Route path="transaction" element={<Transaction />} />
           <Route path="about" element={<AboutRdx />} />
+        </Route>
+
+        <Route path="formik/*" element={<LayoutFormik />}>
+          <Route index element={<FormikHome />} />
+          <Route path="bank" element={<BankAccount />} />
+          <Route path="donation" element={<Donation />} />
+          <Route path="millionaire" element={<Millionaire />} />
         </Route>
 
         <Route path="routing/*" element={<Layout />}>
