@@ -25,6 +25,9 @@ import { Millionaire } from "./pages/formik/Millionaire"
 import { MUIHome } from "./pages/mui/MUIHome"
 import { LayoutMUI } from "./components/mui/LayoutMUI"
 import { Functions } from "./pages/mui/Functions/Functions"
+import { Authentication } from "./pages/mui/Authentication/Authentication"
+import { Database } from "./pages/mui/Database/Database"
+import { Storage } from "./pages/mui/Storage/Storage"
 
 
 const App: FC = () =>  {
@@ -35,12 +38,12 @@ const App: FC = () =>  {
 
         <Route path="mui/*" element={<LayoutMUI />}>
           <Route index element={<MUIHome />} />
-          {/* <Route path="authentication" element={<Authentication />} />
+          <Route path="authentication" element={<Authentication />} />
           <Route path="database" element={<Database />} />
-          <Route path="hosting" element={<Hosting />} /> */}
+          {/* <Route path="hosting" element={<Hosting />} /> */}
           <Route path="functions" element={<Functions />} />
-          {/* <Route path="machine-learning" element={<MachineLearning />} />
-          <Route path="storage" element={<Storage />} /> */}
+          {/* <Route path="machine-learning" element={<MachineLearning />} /> */}
+          <Route path="storage" element={<Storage />} />
         </Route>
 
         <Route path="redux/*" element={<LayoutRdx />}>
