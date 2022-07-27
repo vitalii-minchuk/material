@@ -9,7 +9,7 @@ import {
 import { theme } from "../../globalTheme"
 
 import { Navbar } from "./Navbar/Navbar"
-// import { Header } from "./Header/Header"
+import { Header } from "./Header/Header"
 
 
 const LayoutMUI: FC = () => {
@@ -22,7 +22,7 @@ const LayoutMUI: FC = () => {
           <Navbar />
         </Grid>
         <Grid item xs={12} ml={{xs: "35px", sm: "220px"}}>
-          {/* <Header /> */}
+          <Header />
           <Outlet />
         </Grid>
       </Grid>

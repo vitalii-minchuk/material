@@ -1,10 +1,15 @@
-import { Fragment } from "react"
+import { FC } from "react"
+import { useNavigate } from "react-router-dom"
 
-const MUIHome = () => {
+import { Box, Button } from "@mui/material"
+
+const MUIHome: FC = () => {
+  const navigate = useNavigate()
+
   return (
-    <Fragment>
-      hello
-    </Fragment>
+    <Box p={2}>
+      <Button onClick={() => navigate("/")}>Back to main page</Button>
+    </Box>
   )
 }
 

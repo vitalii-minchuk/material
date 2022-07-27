@@ -24,6 +24,7 @@ import { Donation } from "./pages/formik/Donation"
 import { Millionaire } from "./pages/formik/Millionaire"
 import { MUIHome } from "./pages/mui/MUIHome"
 import { LayoutMUI } from "./components/mui/LayoutMUI"
+import { Functions } from "./pages/mui/Functions/Functions"
 
 
 const App: FC = () =>  {
@@ -36,9 +37,9 @@ const App: FC = () =>  {
           <Route index element={<MUIHome />} />
           {/* <Route path="authentication" element={<Authentication />} />
           <Route path="database" element={<Database />} />
-          <Route path="hosting" element={<Hosting />} />
+          <Route path="hosting" element={<Hosting />} /> */}
           <Route path="functions" element={<Functions />} />
-          <Route path="machine-learning" element={<MachineLearning />} />
+          {/* <Route path="machine-learning" element={<MachineLearning />} />
           <Route path="storage" element={<Storage />} /> */}
         </Route>
 
