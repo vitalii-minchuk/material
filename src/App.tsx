@@ -22,12 +22,25 @@ import { BankAccount } from "./pages/formik/BankAccount"
 import { LayoutFormik } from "./components/formik/LayoutFormik"
 import { Donation } from "./pages/formik/Donation"
 import { Millionaire } from "./pages/formik/Millionaire"
+import { MUIHome } from "./pages/mui/MUIHome"
+import { LayoutMUI } from "./components/mui/LayoutMUI"
+
 
 const App: FC = () =>  {
   return (
     <Fragment>
       <Routes>
         <Route path="/" element={<MainPage />} />
+
+        <Route path="mui/*" element={<LayoutMUI />}>
+          <Route index element={<MUIHome />} />
+          {/* <Route path="authentication" element={<Authentication />} />
+          <Route path="database" element={<Database />} />
+          <Route path="hosting" element={<Hosting />} />
+          <Route path="functions" element={<Functions />} />
+          <Route path="machine-learning" element={<MachineLearning />} />
+          <Route path="storage" element={<Storage />} /> */}
+        </Route>
 
         <Route path="redux/*" element={<LayoutRdx />}>
           <Route index element={<Rdx />} />

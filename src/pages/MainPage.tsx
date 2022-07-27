@@ -8,10 +8,10 @@ const MainPage: FC = () => {
     <div>
       <Typography variant="h4">MainPage</Typography>
       <Stack>
-      <Link to="/routing">routing</Link>
-      <Link to="/redux">redux</Link>
-      <Link to="/formik">formik</Link>
-
+        <Link to="/routing">routing</Link>
+        <Link to="/redux">redux</Link>
+        <Link to="/formik">formik</Link>
+        <Link to="/mui">mui</Link>
       </Stack>
     </div>
   )
