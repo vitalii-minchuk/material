@@ -1,19 +1,21 @@
-import { FC } from "react"
-import { Link } from "react-router-dom"
+import { FC, Fragment } from "react"
 
-import { Stack, Typography } from "@mui/material"
+import { Box, Container, CssBaseline } from "@mui/material"
+import { styles } from "./styles"
+import { Header } from "../components/main-page/Header/Header"
+import { Hero } from "../components/main-page/Hero/Hero"
 
 const MainPage: FC = () => {
   return (
-    <div>
-      <Typography variant="h4">MainPage</Typography>
-      <Stack>
-        <Link to="/routing">routing</Link>
-        <Link to="/redux">redux</Link>
-        <Link to="/formik">formik</Link>
-        <Link to="/mui">mui</Link>
-      </Stack>
-    </div>
+    <Fragment>
+      <CssBaseline />
+      <Box sx={styles.wrapper}>
+        <Container maxWidth="xl">
+          <Header />
+          <Hero />
+        </Container>
+      </Box>
+    </Fragment>
   )
 }
 

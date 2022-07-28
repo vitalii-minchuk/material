@@ -9,14 +9,19 @@ const Header: FC = () => {
   return (
     <Fragment>
         <Container maxWidth="lg">
-          <Stack justifyContent="space-between" flexDirection="row" alignItems="center">
+          <Stack
+            justifyContent="space-between"
+            flexDirection="row"
+            alignItems="center"
+            flexWrap="wrap"
+          >
             <Typography
               variant="h5"
               onClick={() => navigate("/")}
             >
               LOGO
             </Typography>
-            <Stack component="nav" flexDirection="row" gap={3}>
+            <Stack component="nav" flexDirection="row" gap={1} alignItems="center">
               <Link to="">
                 <Typography>Home</Typography>
               </Link>
