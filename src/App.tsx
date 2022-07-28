@@ -28,6 +28,8 @@ import { Functions } from "./pages/mui/Functions/Functions"
 import { Authentication } from "./pages/mui/Authentication/Authentication"
 import { Database } from "./pages/mui/Database/Database"
 import { Storage } from "./pages/mui/Storage/Storage"
+import { Hosting } from "./pages/mui/Hosting/Hosting"
+import { MachineLearning } from "./pages/mui/MachineLearning/MachineLearning"
 
 
 const App: FC = () =>  {
@@ -40,9 +42,9 @@ const App: FC = () =>  {
           <Route index element={<MUIHome />} />
           <Route path="authentication" element={<Authentication />} />
           <Route path="database" element={<Database />} />
-          {/* <Route path="hosting" element={<Hosting />} /> */}
+          <Route path="hosting" element={<Hosting />} />
           <Route path="functions" element={<Functions />} />
-          {/* <Route path="machine-learning" element={<MachineLearning />} /> */}
+          <Route path="machine-learning" element={<MachineLearning />} />
           <Route path="storage" element={<Storage />} />
         </Route>
 
