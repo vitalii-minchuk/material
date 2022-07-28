@@ -12,7 +12,7 @@ import {
 import HelpIcon from "@mui/icons-material/Help"
 import { NotificationBell } from "../NotificationBell/NotificationBell"
 import { headerStyles } from "./headerStyles"
-import avatar from "../../../images/photo1.jpg"
+import avatar from "../../../assets/photo1.jpg"
 
 const Header: FC = () => {
   const [title, setTitle] = useState("")
