@@ -4,6 +4,7 @@ import { Box, Container, CssBaseline } from "@mui/material"
 import { styles } from "./styles"
 import { Header } from "../components/main-page/Header/Header"
 import { Hero } from "../components/main-page/Hero/Hero"
+import { About } from "../components/main-page/About/About"
 
 const MainPage: FC = () => {
   return (
@@ -13,6 +14,7 @@ const MainPage: FC = () => {
         <Container maxWidth="xl">
           <Header />
           <Hero />
+          <About />
         </Container>
       </Box>
     </Fragment>
