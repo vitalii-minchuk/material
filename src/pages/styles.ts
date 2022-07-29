@@ -5,5 +5,4 @@ export const styles = {
     width: "100%",
     backgroundColor: "black"
   },
-
 }

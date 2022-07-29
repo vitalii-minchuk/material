@@ -29,7 +29,12 @@ const Header: FC = () => {
       <Wrapper bg="teal" color="white">
         <Container maxWidth="lg">
           <Stack justifyContent="space-between" flexDirection="row" alignItems="center">
-            <Typography variant="h5">LOGO</Typography>
+            <Typography
+              onClick={() => navigate("/")}
+              variant="h5"
+            >
+              LOGO
+            </Typography>
             <Stack component="nav" flexDirection="row" gap={3}>
               <CustomNavLink to="">Home</CustomNavLink>
               <CustomNavLink to="contacts">Contacts</CustomNavLink>
