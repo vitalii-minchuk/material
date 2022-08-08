@@ -10,10 +10,10 @@ interface IMyMenu {
 const MyMenu: FC<IMyMenu> = ({ ...sx }) => {
   return (
     <List {...sx}>
-      <Link to="/routing">
+      <Link to="/redux">
         <ListItem>redux</ListItem>
       </Link>
-      <Link to="/redux">
+      <Link to="/routing">
         <ListItem>routing</ListItem>
       </Link>
       <Link to="/formik">
