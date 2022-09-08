@@ -16,6 +16,7 @@ const Header: FC = () => {
             flexWrap="wrap"
           >
             <Typography
+              sx={{cursor: "pointer"}}
               variant="h5"
               onClick={() => navigate("/")}
             >
